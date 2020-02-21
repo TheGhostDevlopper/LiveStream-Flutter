@@ -27,7 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String dateTime;
+  DateTime dateTime;
   bool _isExecuting = false;
   BackgroundExecute backgroundExecute = new BackgroundExecute();
   LiveStream _liveStream = new LiveStream();
@@ -40,15 +40,14 @@ class _MyHomePageState extends State<MyHomePage> {
     backgroundExecute.execOnce();
   }
 
-  void _initLiveStream() {   
-
-    _liveStream.on("dateTime", (value){
+  void _initLiveStream() {
+    _liveStream.on("dateTime", (value) {
       setState(() {
         dateTime = value;
       });
     });
-  
-    _liveStream.on("random", (value){
+
+    _liveStream.on("random", (value) {
       print("Random Value = $value");
     });
   }
@@ -68,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$dateTime',
-              style: Theme.of(context).textTheme.display1,
+              style: Theme.of(context).textTheme.bodyText1,
             ),
             RaisedButton(
               onPressed: _initLiveStream,
